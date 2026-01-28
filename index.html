@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Alpine DevTools Test</title>
+        <script type="importmap">
+            {
+                "imports": {
+                    "alpinejs": "https://cdnjs.cloudflare.com/ajax/libs/alpinejs/3.15.0/module.esm.min.js"
+                }
+            }
+        </script>
+        <script type="module">
+            import Alpine from 'alpinejs';
+            
+            document.addEventListener('alpine:init', () => {
+                Alpine.data('myData', () => ({
+                    text: 'hello world',            
+                    get textDisplay() {
+                        return this.text + '!';
+                    },
+                }));
+            });
+            
+            window.Alpine = Alpine;
+            Alpine.start();
+        </script>
+    </head>
+    <body>
+        <div x-data="myData">
+            <p x-text="textDisplay"></p>
+        </div>
+    </body>
+</html>
