@@ -13,8 +13,17 @@
             import Alpine from 'alpinejs';
             
             document.addEventListener('alpine:init', () => {
+                Alpine.data('page', () => ({
+                    title: 'test',
+                    
+                    get textDisplay() {
+                        return this.title.toUpperCase();
+                    },
+                }));
+                
                 Alpine.data('myData', () => ({
-                    text: 'hello world',            
+                    text: 'hello world',
+                    
                     get textDisplay() {
                         return this.text + '!';
                     },
@@ -26,8 +35,10 @@
         </script>
     </head>
     <body>
-        <div x-data="myData">
-            <p x-text="textDisplay"></p>
-        </div>
+        <section x-data="page">
+            <div x-data="myData">
+                <p x-text="textDisplay"></p>
+            </div>
+        </section>
     </body>
 </html>
