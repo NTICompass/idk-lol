@@ -16,7 +16,7 @@
                 Alpine.data('page', () => ({
                     title: 'test',
                     
-                    get textDisplay() {
+                    get titleDisplay() {
                         return this.title.toUpperCase();
                     },
                 }));
@@ -36,6 +36,7 @@
     </head>
     <body>
         <section x-data="page">
+            <h1 x-text="titleDisplay"></h1>
             <div x-data="myData">
                 <p x-text="textDisplay"></p>
             </div>
